@@ -50,5 +50,89 @@
 
     <a class="cta" href="#">Start Your Build</a>
   </main>
+
+  <section id="build-tool">
+  <h2>Build Your Custom PC</h2>
+  <form id="pc-builder-form">
+
+    <!-- CPU -->
+    <div class="part-select">
+      <img src="https://via.placeholder.com/150x100?text=CPU" alt="CPU" />
+      <label for="cpu"><strong>CPU</strong></label>
+      <select id="cpu">
+        <option value="">-- Select CPU --</option>
+        <option value="Intel Core i5 12th Gen">Intel Core i5 12th Gen - 6 Cores, 12 Threads</option>
+        <option value="Intel Core i7 13th Gen">Intel Core i7 13th Gen - 8 Cores, 16 Threads</option>
+        <option value="AMD Ryzen 5 5600X (Zen 3)">AMD Ryzen 5 5600X (Zen 3) - 6 Cores, 12 Threads</option>
+        <option value="AMD Ryzen 7 7700X (Zen 4)">AMD Ryzen 7 7700X (Zen 4) - 8 Cores, 16 Threads</option>
+      </select>
+    </div>
+
+    <!-- GPU -->
+    <div class="part-select">
+      <img src="https://via.placeholder.com/150x100?text=GPU" alt="GPU" />
+      <label for="gpu"><strong>GPU</strong></label>
+      <select id="gpu">
+        <option value="">-- Select GPU --</option>
+        <option value="NVIDIA RTX 4060">NVIDIA RTX 4060 - 8GB GDDR6</option>
+        <option value="NVIDIA RTX 4070">NVIDIA RTX 4070 - 12GB GDDR6X</option>
+        <option value="AMD RX 7600">AMD RX 7600 - 8GB GDDR6</option>
+      </select>
+    </div>
+
+    <!-- RAM -->
+    <div class="part-select">
+      <img src="https://via.placeholder.com/150x100?text=RAM" alt="RAM" />
+      <label for="ram"><strong>RAM</strong></label>
+      <select id="ram">
+        <option value="">-- Select RAM --</option>
+        <option value="16GB DDR4">16GB DDR4 - 3200MHz</option>
+        <option value="32GB DDR5">32GB DDR5 - 5600MHz</option>
+      </select>
+    </div>
+
+    <!-- Storage -->
+    <div class="part-select">
+      <img src="https://via.placeholder.com/150x100?text=Storage" alt="Storage" />
+      <label for="storage"><strong>Storage</strong></label>
+      <select id="storage">
+        <option value="">-- Select Storage --</option>
+        <option value="500GB SSD">500GB SSD - NVMe Gen 3</option>
+        <option value="1TB SSD">1TB SSD - NVMe Gen 4</option>
+        <option value="2TB HDD">2TB HDD - 7200RPM</option>
+      </select>
+    </div>
+
+    <button type="button" onclick="showBuild()">Show My Build</button>
+  </form>
+
+  <div id="build-summary" style="margin-top: 1.5rem; background: #1f1f1f; padding: 1rem; border-radius: 8px;"></div>
+</section>
+
 </body>
 </html>
+
+<script>
+  function showBuild() {
+    const cpu = document.getElementById('cpu').value;
+    const gpu = document.getElementById('gpu').value;
+    const ram = document.getElementById('ram').value;
+    const storage = document.getElementById('storage').value;
+
+    if (!cpu || !gpu || !ram || !storage) {
+      alert('Please select all components.');
+      return;
+    }
+
+    const summary = `
+      <h3>Your Selected Build:</h3>
+      <ul>
+        <li><strong>CPU:</strong> ${cpu}</li>
+        <li><strong>GPU:</strong> ${gpu}</li>
+        <li><strong>RAM:</strong> ${ram}</li>
+        <li><strong>Storage:</strong> ${storage}</li>
+      </ul>
+    `;
+    document.getElementById('build-summary').innerHTML = summary;
+  }
+</script>
